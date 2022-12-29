@@ -1,0 +1,15 @@
+commands:
+  example:
+    desc: "Example."
+    color: "CYAN"
+    footer: ""
+    icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    fields:
+      a:
+        title: "Example 2"
+        desc: "Example 2 desc"
+        inline: false
+      b:
+        title: "Example"
+        desc: "example desc"
+        inline: false

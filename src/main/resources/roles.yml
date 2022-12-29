@@ -1,0 +1,7 @@
+roles:
+  vip:
+    permission: "role.vip"
+    id: 1050106152974815243
+  plus:
+    permission: "role.vip2"
+    id: 1050106130333978744

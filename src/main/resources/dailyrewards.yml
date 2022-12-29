@@ -1,0 +1,12 @@
+dailyrewards:
+  vip:
+    group: "role.vip"
+    cooldown: 150 # second
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın **Ödülün:**Şeytan'ın eşyalarını dızladın!"
+      color: "YELLOW"
+      footer: "play.demoncraft.net"
+      thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    commands:
+      - "give %player% diamond"

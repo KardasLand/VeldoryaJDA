@@ -1,0 +1,81 @@
+server:
+  commands:
+    veldoryaDiscordHelp:
+      - "&bVeldorya Discord"
+      - "&b&l/suggest <suggestion>"
+      - "&fSends a suggestion to our discord server."
+      - "&b&l/verify"
+      - "&fCreate a verification code for discord identification."
+    suggestUsage: "Usage: /suggest <suggestion>"
+  noPermission: "Yetkin yok!"
+  createVerify: "Başarıyla oluşturdun. Kod: %code% - Kimse ile paylaşma!"
+  alreadyVerified: "Zaten doğrulanmışsın!"
+  suggestSuccess: "Başarıyla önerini discorda gönderdin!"
+  suggestCooldown: "Hala bekleme süresindesin! Beklemen gereken: %time%"
+  reloadedSuccessfully: "Reloaded successfully. Keep in mind that MySQL and Discord changes should be made with stop & start method"
+discord:
+  embeds:
+    cannotUseInChannel:
+      title: "Uyarı!"
+      description: "\nBu komutu bu kanalda kullanamazsın!"
+      color: RED
+      footer: "play.demoncraft.net"
+      icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    verify:
+      success:
+        title: "Başarılı!"
+        description: "\n**%player%** hesabını başarıyla eşledin!"
+        color: GREEN
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      alreadyVerified:
+        title: "Başarısız!"
+        description: "Hesabını zaten onaylamışsın!"
+        color: GRAY
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      invalidToken:
+        title: "Hesap Eşleme"
+        description: "Böyle bir kod bulunamadı! Kullanım: **!eşle <kod>**"
+        color: RED
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    join:
+      color: "GREEN"
+      description: "%player% sunucuya giriş yaptı."
+    leave:
+      color: "RED"
+      description: "%player% sunucudan çıkış yaptı."
+    suggestion:
+      title: "Yeni bir öneri var!"
+      description: "Öneren Kişi: **%player%**\n\n**Önerisi:** ```fix\n%suggestion%```"
+      footer: "play.demoncraft.net"
+      icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      color: ORANGE
+      thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    reward:
+      cantReward:
+        description: "Bulunduğun grup ödül almaya uygun değil!"
+        title: "Dikkat!"
+        color: RED
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      notOnline:
+        description: "Online olman gerekiyor!"
+        title: "Dikkat!"
+        color: RED
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      cantRewardNow:
+        description: "Şu anda ödülünü alamazsın biraz daha beklemen gerek! Kalan: %remaining%"
+        title: "Uyarı!"
+        color: GRAY
+        footer: "play.demoncraft.net"
+        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"

@@ -1,0 +1,26 @@
+discord:
+  token: ""
+  owner: ""
+  guild: ""
+  prefix: ""
+  status: "%online% kişi oynuyor!"
+  verifyCommandList:
+    - "give %player% diamond 20"
+  channels:
+    suggestions: ""
+    joinleave: ""
+    verify: ""
+    dailyreward: ""
+    discordchat: ""
+discordchat:
+    format: "%player% > %message%"
+suggestionTime: 20 # second
+autosaveTime: 300 # second
+sql:
+  type: "sqlite"
+  host: "localhost"
+  #schema: "development"
+  database: ""
+  username: ""
+  password: ""
+  port: 3306
