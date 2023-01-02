@@ -140,18 +140,24 @@ public final class VeldoryaJDA extends JavaPlugin {
 
     private void setupDependencyInjection() throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         if (Version.getServerVersion(this.getServer()).isOlderThan(Version.v1_16_R3)){
-            String jarPath = VeldoryaJDA.instance.getDataFolder() + File.separator + "jda.jar";
-            if (!new File(jarPath).exists()){
-                new File(jarPath).createNewFile();
+            String libFolder = VeldoryaJDA.instance.getDataFolder() + File.separator + "libs";
+            String jarPath = VeldoryaJDA.instance.getDataFolder() + File.separator + "libs" + File.separator + "jda.jar";
+            File lib = new File(libFolder);
+            File jar = new File(jarPath);
+            if (!lib.exists()){
+                lib.mkdirs();
+            }
+            if (!jar.exists()){
+                jar.createNewFile();
                 InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("jda.jar");
                 assert inputStream != null;
-                copyInputStreamToFile(inputStream, new File(jarPath));
+                copyInputStreamToFile(inputStream, jar);
             }
             ClassLoader classLoader = ClassLoader.getSystemClassLoader();
             try {
                 Method method = classLoader.getClass().getDeclaredMethod("addURL", URL.class);
                 method.setAccessible(true);
-                method.invoke(classLoader, new File(jarPath).toURI().toURL());
+                method.invoke(classLoader, jar.toURI().toURL());
             } catch (NoSuchMethodException e) {
                 Method method = classLoader.getClass()
                         .getDeclaredMethod("appendToClassPathForInstrumentation", String.class);
