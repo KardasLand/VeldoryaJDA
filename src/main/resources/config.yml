@@ -14,6 +14,7 @@ discord:
     discordchat: ""
 discordchat:
     format: "%player% > %message%"
+changePlayerNameAfterVerify: true
 suggestionTime: 20 # second
 autosaveTime: 300 # second
 sql:

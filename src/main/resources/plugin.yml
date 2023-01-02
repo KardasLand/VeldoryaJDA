@@ -3,6 +3,14 @@ version: '1.0'
 main: com.kardasland.veldoryadiscord.VeldoryaJDA
 api-version: 1.16
 website: www.veldorya.com
+# <dependency>
+#            <groupId>net.dv8tion</groupId>
+#            <artifactId>JDA</artifactId>
+#            <version>5.0.0-beta.1</version>
+#            <scope>provided</scope>
+#        </dependency>
+libraries:
+  - net.dv8tion:JDA:5.0.0-beta.1
 commands:
   dogrula:
     aliases:

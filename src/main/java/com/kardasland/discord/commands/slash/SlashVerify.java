@@ -5,6 +5,7 @@ import com.kardasland.discord.models.CustomEmbed;
 import com.kardasland.veldoryadiscord.VeldoryaJDA;
 import com.kardasland.veldoryadiscord.models.DPlayer;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -52,7 +53,13 @@ public class SlashVerify extends ListenerAdapter {
                     dPlayer.update();
                     VeldoryaJDA.instance.verifyMap.remove(map.getKey(), map.getValue());
                     //System.out.println(dPlayer);
-
+                    try {
+                        if (ConfigManager.get("config.yml").getBoolean("changePlayerNameAfterVerify")){
+                            event.getMember().modifyNickname(dPlayer.getPlayer().getName()).queue();
+                        }
+                    }catch (HierarchyException exception){
+                        continue;
+                    }
                     new BukkitRunnable(){
                         @Override
                         public void run() {

@@ -7,6 +7,7 @@ import com.kardasland.veldoryadiscord.VeldoryaJDA;
 import com.kardasland.veldoryadiscord.models.DPlayer;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -58,6 +59,14 @@ public class PrefixVerify extends ListenerAdapter {
                     dPlayer.update();
                     VeldoryaJDA.instance.verifyMap.remove(map.getKey(), map.getValue());
                     //System.out.println(dPlayer);
+                    try {
+                        if (ConfigManager.get("config.yml").getBoolean("changePlayerNameAfterVerify")){
+                            event.getMember().modifyNickname(dPlayer.getPlayer().getName()).queue();
+                        }
+                    }catch (HierarchyException exception){
+                        continue;
+                    }
+
                     new BukkitRunnable(){
                         @Override
                         public void run() {

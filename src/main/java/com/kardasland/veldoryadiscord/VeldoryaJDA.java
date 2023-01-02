@@ -26,11 +26,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.kardasland.veldoryadiscord.Utils.copyInputStreamToFile;
 
 public final class VeldoryaJDA extends JavaPlugin {
 
@@ -65,10 +74,16 @@ public final class VeldoryaJDA extends JavaPlugin {
      * - KardasLand#9552
      */
 
+
+
     @Override
     public void onEnable() {
         try {
             instance = this;
+
+            setupDependencyInjection();
+
+
 
             this.verifyMap = new HashMap<>();
             this.embedCommandsList = new ArrayList<>();
@@ -115,10 +130,36 @@ public final class VeldoryaJDA extends JavaPlugin {
             System.out.println("SQL Exception! Printing the error and shutting down the plugin.");
             ex.printStackTrace();
             this.getPluginLoader().disablePlugin(this);
-        }catch (InterruptedException ex){
+        }catch (InterruptedException | NoSuchMethodException | IllegalAccessException | InvocationTargetException |
+                IOException | RuntimeException ex){
             System.out.println("Interrupted/JDA Exception! Printing the error and shutting down the plugin.");
             ex.printStackTrace();
             this.getPluginLoader().disablePlugin(this);
+        }
+    }
+
+    private void setupDependencyInjection() throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        if (Version.getServerVersion(this.getServer()).isOlderThan(Version.v1_16_R3)){
+            String jarPath = VeldoryaJDA.instance.getDataFolder() + File.separator + "jda.jar";
+            if (!new File(jarPath).exists()){
+                new File(jarPath).createNewFile();
+                InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("jda.jar");
+                assert inputStream != null;
+                copyInputStreamToFile(inputStream, new File(jarPath));
+            }
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+            try {
+                Method method = classLoader.getClass().getDeclaredMethod("addURL", URL.class);
+                method.setAccessible(true);
+                method.invoke(classLoader, new File(jarPath).toURI().toURL());
+            } catch (NoSuchMethodException e) {
+                Method method = classLoader.getClass()
+                        .getDeclaredMethod("appendToClassPathForInstrumentation", String.class);
+                method.setAccessible(true);
+                method.invoke(classLoader, jarPath);
+            } catch (MalformedURLException | InvocationTargetException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
