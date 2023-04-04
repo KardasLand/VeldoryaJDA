@@ -7,43 +7,60 @@ server:
       - "&b&l/verify"
       - "&fCreate a verification code for discord identification."
     suggestUsage: "Usage: /suggest <suggestion>"
+  2fa:
+    - "2 Factor Security"
+    - "You need to reply the given code in bot's private messages."
+    - "Your 2fa code: %code%"
+  2faSuccess: "Verified successfully!"
   noPermission: "Yetkin yok!"
   createVerify: "Başarıyla oluşturdun. Kod: %code% - Kimse ile paylaşma!"
   alreadyVerified: "Zaten doğrulanmışsın!"
   suggestSuccess: "Başarıyla önerini discorda gönderdin!"
   suggestCooldown: "Hala bekleme süresindesin! Beklemen gereken: %time%"
   reloadedSuccessfully: "Reloaded successfully. Keep in mind that MySQL and Discord changes should be made with stop & start method"
+  unlink:
+    notVerified: "Hesap zaten linkli değil!"
+    confirmation: "Lütfen onaylamak için 10 saniye içinde bir kere daha giriniz."
+    successOwn: "Başarıyla hesabının sunucu ile bağlantısı kesildi."
+    successOther: "Başarıyla silindi."
 discord:
   embeds:
+    2fa:
+      title: "2 Factor Authentication"
+      description: "\nWe have detected that you entered our server. If it is you, please enter your 2fa code below."
+      color: RED
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     cannotUseInChannel:
       title: "Uyarı!"
       description: "\nBu komutu bu kanalda kullanamazsın!"
       color: RED
-      footer: "play.demoncraft.net"
-      icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-      thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     verify:
       success:
         title: "Başarılı!"
         description: "\n**%player%** hesabını başarıyla eşledin!"
         color: GREEN
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
       alreadyVerified:
         title: "Başarısız!"
         description: "Hesabını zaten onaylamışsın!"
         color: GRAY
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
       invalidToken:
         title: "Hesap Eşleme"
         description: "Böyle bir kod bulunamadı! Kullanım: **!eşle <kod>**"
         color: RED
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     join:
       color: "GREEN"
       description: "%player% sunucuya giriş yaptı."
@@ -53,29 +70,29 @@ discord:
     suggestion:
       title: "Yeni bir öneri var!"
       description: "Öneren Kişi: **%player%**\n\n**Önerisi:** ```fix\n%suggestion%```"
-      footer: "play.demoncraft.net"
-      icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
       color: ORANGE
-      thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     reward:
       cantReward:
         description: "Bulunduğun grup ödül almaya uygun değil!"
         title: "Dikkat!"
         color: RED
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
       notOnline:
         description: "Online olman gerekiyor!"
         title: "Dikkat!"
         color: RED
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
       cantRewardNow:
         description: "Şu anda ödülünü alamazsın biraz daha beklemen gerek! Kalan: %remaining%"
         title: "Uyarı!"
         color: GRAY
-        footer: "play.demoncraft.net"
-        icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
-        thumbnail: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+        footer: "play.veldorya.com"
+        icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+        thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"

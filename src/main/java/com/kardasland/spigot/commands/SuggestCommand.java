@@ -6,6 +6,7 @@ import com.kardasland.discord.models.CustomEmbed;
 import com.kardasland.veldoryadiscord.VeldoryaJDA;
 import com.kardasland.veldoryadiscord.Utils;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,7 +36,10 @@ public class SuggestCommand implements CommandExecutor {
                 }
                 CustomEmbed customEmbed = new CustomEmbed(ConfigManager.get("messages.yml"), "discord.embeds.suggestion");
                 customEmbed.setDesc(customEmbed.getDesc().replaceAll("%player%", player.getName()).replaceAll("%suggestion%", sm.toString()));
-                channel.sendMessageEmbeds(customEmbed.buildEmbed()).queue();
+                channel.sendMessageEmbeds(customEmbed.buildEmbed()).queue(message -> {
+                    message.addReaction(Emoji.fromFormatted("✅")).queue();
+                    message.addReaction(Emoji.fromFormatted("❌")).queue();
+                });
 
                 CooldownHandler cooldownHandler = new CooldownHandler(player.getUniqueId(), "suggest", ConfigManager.get("config.yml").getInt("suggestionTime"));
                 cooldownHandler.start();

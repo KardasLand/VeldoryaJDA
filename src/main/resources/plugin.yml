@@ -1,16 +1,12 @@
 name: VeldoryaDiscord
-version: '1.0'
+version: '1.0.5'
 main: com.kardasland.veldoryadiscord.VeldoryaJDA
 api-version: 1.16
 website: www.veldorya.com
-# <dependency>
-#            <groupId>net.dv8tion</groupId>
-#            <artifactId>JDA</artifactId>
-#            <version>5.0.0-beta.1</version>
-#            <scope>provided</scope>
-#        </dependency>
 libraries:
   - net.dv8tion:JDA:5.0.0-beta.1
+  - mysql:mysql-connector-java:8.0.30
+  - com.zaxxer:HikariCP:4.0.3
 commands:
   dogrula:
     aliases:
@@ -24,3 +20,8 @@ commands:
   veldoryadiscord:
     aliases:
       - vdiscord
+  dinfo:
+
+  unlink:
+    aliases:
+      - dogrulamayikaldir

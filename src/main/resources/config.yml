@@ -12,15 +12,30 @@ discord:
     verify: ""
     dailyreward: ""
     discordchat: ""
+    consoleMirror: ""
 discordchat:
     format: "%player% > %message%"
+modules:
+  suggestionModule: true
+  joinLeaveModule: true
+  verifyModule: true
+  dailyRewardModule: true
+  discordChatModule: true
+  sudoModule: true
+  2faModule: true
+  ticketModule: true
+  consoleModule: true
+2faPlayers:
+  - "KardasLand"
+2faWhitelist:
+  - "/login"
 changePlayerNameAfterVerify: true
+remember2FAIPAddresses: true
 suggestionTime: 20 # second
 autosaveTime: 300 # second
 sql:
   type: "sqlite"
   host: "localhost"
-  #schema: "development"
   database: ""
   username: ""
   password: ""

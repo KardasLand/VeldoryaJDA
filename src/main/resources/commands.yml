@@ -3,7 +3,7 @@ commands:
     desc: "Example."
     color: "CYAN"
     footer: ""
-    icon: "https://cdn.discordapp.com/icons/593515553516158989/3c46320ba6ec43d6c785b6b87d23e554.webp"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     fields:
       a:
         title: "Example 2"

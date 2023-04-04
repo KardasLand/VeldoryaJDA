@@ -22,8 +22,11 @@ public class CustomEmbed {
     @Getter @Setter String desc;
     @Getter @Setter Color color;
     @Getter @Setter Footer footer;
+    @Getter @Setter EmbedAuthor author;
     @Getter @Setter String thumbnail;
     @Getter @Setter List<EmbedField> embedFieldList;
+
+    @Getter @Setter String image;
 
 
     public CustomEmbed(String title, String desc, Color color, EmbedField... embedFields){
@@ -40,12 +43,18 @@ public class CustomEmbed {
         this.color = color;
         this.embedFieldList = embedFields;
     }
+    public CustomEmbed(Color color, List<EmbedField> embedFields){
+        this.embed = new EmbedBuilder();
+        this.color = color;
+        this.embedFieldList = embedFields;
+    }
     public CustomEmbed (FileConfiguration cf, String path){
         this.embed = new EmbedBuilder();
         this.title = cf.getString(path+".title");
         this.desc = cf.getString(path+".description");
         this.color = Utils.getAWTColor(cf.getString(path+".color"));
         this.thumbnail = cf.isSet(path+ ".thumbnail") ? cf.getString(path+ ".thumbnail") : null;
+        this.image = cf.isSet(path+ ".image") ? cf.getString(path+ ".image") : null;
         this.footer = cf.isSet(path+ ".footer") ? new CustomEmbed.Footer(cf.getString(path+ ".footer"), (cf.isSet(path+".icon") ? cf.getString(path+".icon") : null)): null;
         //System.out.println(cf.getString(path+".icon"));
     }
@@ -58,8 +67,12 @@ public class CustomEmbed {
     }
 
     public MessageEmbed buildEmbed(){
-        embed.setTitle(title);
-        embed.setDescription(desc);
+        if (title != null && !title.isEmpty()){
+            embed.setTitle(title);
+        }
+        if (desc != null && !desc.isEmpty()){
+            embed.setDescription(desc);
+        }
         embed.setColor(color);
         if (footer != null){
             if (footer.getIconURL() != null && !footer.getIconURL().isEmpty()){
@@ -67,6 +80,12 @@ public class CustomEmbed {
             }else {
                 embed.setFooter(footer.getText());
             }
+        }
+        if (author != null){
+            embed.setAuthor(author.name, author.url, author.url);
+        }
+        if (image != null && !image.isEmpty()){
+            embed.setImage(image);
         }
         if (embedFieldList != null && !embedFieldList.isEmpty()){
             // IDK WHY THAT HAPPENS, IDK HOW IT HAPPENS. ALL I KNOW IS THIS JUST WORKS.
@@ -87,6 +106,24 @@ public class CustomEmbed {
             embed.setThumbnail(thumbnail);
         }
         return embed.build();
+    }
+
+    public static class EmbedAuthor{
+        @Getter @Setter String name;
+        @Getter @Setter String url;
+
+        public EmbedAuthor(String name, String url){
+            this.name = name;
+            this.url = url;
+        }
+
+        @Override
+        public String toString() {
+            return "EmbedAuthor{" +
+                    "name='" + name + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
     }
 
     public static class EmbedField{

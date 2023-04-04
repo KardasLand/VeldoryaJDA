@@ -1,16 +1,19 @@
 package com.kardasland.data.sql;
 
 import com.kardasland.data.ISQLOperations;
+import com.kardasland.data.sql.callbacks.DPlayerCallback;
 import com.kardasland.veldoryadiscord.Utils;
 import com.kardasland.veldoryadiscord.VeldoryaJDA;
 import com.kardasland.veldoryadiscord.models.DPlayer;
 import lombok.SneakyThrows;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.UUID;
 
 public class SQLite implements ISQLOperations {
     Connection connection;
@@ -46,6 +49,65 @@ public class SQLite implements ISQLOperations {
     }
 
     @Override
+    public void getDPlayerAsync(Player player, DPlayerCallback dPlayerCallback) {
+        // Run outside of the tick loop
+        Bukkit.getScheduler().runTaskAsynchronously(VeldoryaJDA.instance, () -> {
+            try{
+                Connection connection = this.connection;
+                PreparedStatement select = connection.prepareStatement("SELECT * FROM veldoryajda WHERE playeruuid=?");
+                select.setString(1, String.valueOf(player.getUniqueId()));
+                ResultSet resultSet = select.executeQuery();
+                DPlayer dPlayer = new DPlayer();
+                dPlayer.setPlayer(player);
+                dPlayer.setPlayerUUID(player.getUniqueId().toString());
+                dPlayer.setVerified(false);
+                if (resultSet.next()){
+                    dPlayer.setDiscordID(resultSet.getString("discordid"));
+                    dPlayer.setGroups(resultSet.getString("groups"));
+                    dPlayer.setTimestamp(resultSet.getTimestamp("timestamp"));
+                    dPlayer.setVerified(true);
+                }
+                Bukkit.getScheduler().runTask(VeldoryaJDA.instance, () -> {
+                    // call the callback with the result
+                    dPlayerCallback.onQueryDone(dPlayer);
+                });
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    @Override
+    public void getDPlayerAsync(UUID uuid, DPlayerCallback dPlayerCallback) {
+        Bukkit.getScheduler().runTaskAsynchronously(VeldoryaJDA.instance, () -> {
+            try{
+                Connection connection = this.connection;
+                PreparedStatement select = connection.prepareStatement("SELECT * FROM veldoryajda WHERE playeruuid=?");
+                select.setString(1, String.valueOf(uuid));
+                ResultSet resultSet = select.executeQuery();
+                DPlayer dPlayer = new DPlayer();
+                dPlayer.setOfflinePlayer(Bukkit.getOfflinePlayer(uuid));
+                dPlayer.setPlayerUUID(uuid.toString());
+                dPlayer.setVerified(false);
+                if (resultSet.next()){
+                    //System.out.println(resultSet.toString());
+                    dPlayer.setDiscordID(resultSet.getString("discordid"));
+                    //System.out.println(resultSet.getString("discordid"));
+                    dPlayer.setGroups(resultSet.getString("groups"));
+                    dPlayer.setTimestamp(resultSet.getTimestamp("timestamp"));
+                    dPlayer.setVerified(true);
+                }
+                Bukkit.getScheduler().runTask(VeldoryaJDA.instance, () -> {
+                    // call the callback with the result
+                    dPlayerCallback.onQueryDone(dPlayer);
+                });
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    @Override
     public ResultSet select(String discordid) {
         try{
             PreparedStatement select = this.connection.prepareStatement("SELECT * FROM veldoryajda WHERE discordid=?");
@@ -69,6 +131,22 @@ public class SQLite implements ISQLOperations {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void deletePlayer(DPlayer dPlayer) {
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                try{
+                    PreparedStatement select = connection.prepareStatement("DELETE FROM veldoryajda WHERE discordid=?");
+                    select.setString(1, dPlayer.getDiscordID());
+                    select.executeUpdate();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }.runTaskAsynchronously(VeldoryaJDA.instance);
     }
 
     @Override

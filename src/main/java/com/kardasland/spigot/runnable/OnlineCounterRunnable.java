@@ -9,6 +9,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class OnlineCounterRunnable extends BukkitRunnable {
     @Override
     public void run() {
-        VeldoryaJDA.jda.getPresence().setActivity(Activity.playing(ConfigManager.get("config.yml").getString("discord.status").replaceAll("%online%", String.valueOf(Bukkit.getOnlinePlayers().size())) ));
+        if (VeldoryaJDA.jda != null)
+            VeldoryaJDA.jda.getPresence().setActivity(Activity.playing(ConfigManager.get("config.yml").getString("discord.status").replaceAll("%online%", String.valueOf(Bukkit.getOnlinePlayers().size())) ));
     }
 }

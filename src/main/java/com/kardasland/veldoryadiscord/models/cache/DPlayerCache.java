@@ -15,15 +15,20 @@ public class DPlayerCache {
         this.dPlayerList = new ArrayList<>();
     }
 
+    /*
     public void add(Player player){
         dPlayerList.add(new DPlayer(player));
-    }
+    }*/
+
     public void add(DPlayer dPlayer){
         dPlayerList.add(dPlayer);
     }
     public void remove(Player player){
         DPlayer target = findPlayer(player);
         dPlayerList.remove(target);
+    }
+    public void remove(DPlayer dPlayer){
+        dPlayerList.remove(dPlayer);
     }
     public DPlayer findPlayer(Player player){
         for (DPlayer search : dPlayerList){

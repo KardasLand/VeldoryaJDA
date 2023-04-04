@@ -1,0 +1,100 @@
+messages:
+  ticketInitialMessage:
+    title: "Destek Talebi"
+    description: "\nDestek talebi açmak için aşağıdaki butona tıklayabilirsin."
+    color: CYAN
+    footer: "www.veldorya.net"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+  ticketHelpMessage:
+    title: "Destek Talebi Nasıl Oluşturabilirsin?"
+    description: "\nDestek talebi oluştur butonuna tıkladıktan sonra karşına bir form gelecektir. O formu doldurduktan sonra destek talebin başarılı bir şekilde gerçekleşecektir."
+    color: CYAN
+    footer: "www.veldorya.net"
+    image: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+  openTicketMessage:
+    color: "GREEN"
+    icon: "%avatar%"
+    fields:
+      ticketOpener:
+        title: "Destek Açan:"
+        desc: "%mentionmember%"
+      ticketOpenTime:
+        title: "Açılış Zamanı: "
+        desc: "%timestamp%"
+    author:
+      name: "%member% | Destek Açıldı"
+      iconURL: "%avatar%"
+    footer:
+      text: "Oluşturan: %member%"
+      iconURL: "%avatar%"
+  transcriptMessage:
+    color: "GREEN"
+    thumbnail: "%memberavatar%"
+    fields:
+      1:
+        title: "Destek Açan:"
+        desc: "%mentionopener%"
+        inline: true
+      2:
+        title: "Açılış Zamanı: "
+        desc: "%opentimestamp%"
+        inline: true
+      3:
+        title: " "
+        desc: " "
+        inline: false
+      4:
+        title: "Desteği Kapatan:"
+        desc: "%mentioncloser%"
+        inline: true
+      5:
+        title: "Kapatılış Zamanı:"
+        desc: "%closetimestamp%"
+        inline: true
+  reasonForTicket:
+    color: "GREEN"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    title: "Neden destek talebi açtığını öğrenebilir miyiz?"
+    description: "%reason%"
+  ticketClosed:
+    color: "CYAN"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    title: "Destek Kapandı"
+    description: "Destek talebi %mentionmember% tarafından kapatıldı."
+  ticketControls:
+    color: "BLACK"
+    title: "Destek Ekibi Kontrolleri"
+  ticketReopened:
+    color: "CYAN"
+    title: "Destek Talebi Geri Açıldı"
+    description: "Destek talebi %member% tarafından tekrar açıldı."
+  ticketOpened: "Destek talebiniz açıldı. %mentionticket%"
+  alreadyOpenedOne: "Zaten bir destek talebiniz mevcut. %mentionticket%"
+buttons:
+  openTicket:
+    title: "Destek Talebi Oluştur"
+    emoji: "🔒"
+    color: "GREEN"
+  openTicketHelp:
+    title: "Nasıl Destek Oluşturabilirim?"
+    color: "GRAY"
+  closeTicket:
+    title: "Kapat"
+    emoji: "🔓"
+    color: "RED"
+  reopenTicket:
+    title: "Yeniden Aç"
+    emoji: "✅"
+    color: "GREEN"
+  deleteTicket:
+    title: "Sil"
+    emoji: "⛔"
+    color: "RED"
+ticketChannel: ""
+ticketCategory: ""
+ticketFormat: "ticket-%number%-%member%"
+transcriptChannel: ""
+askForReason: true
+supportTeamRoles:
+  - ""

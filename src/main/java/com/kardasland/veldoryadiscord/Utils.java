@@ -1,6 +1,7 @@
 package com.kardasland.veldoryadiscord;
 
 import com.kardasland.data.ConfigManager;
+import com.kardasland.discord.ticket.Ticket;
 import net.dv8tion.jda.api.entities.Message;
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.bukkit.ChatColor;
@@ -12,7 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static com.kardasland.discord.ticket.Ticket.fromString;
 
 public class Utils {
     public static String color(String s){
@@ -30,6 +34,21 @@ public class Utils {
         return color1;
     }
 
+    public static String findOwnerID(String channelName){
+        String ownerID = null;
+        List<String> encodedList = ConfigManager.get("ticketdata.yml").getStringList("tickets");
+        try {
+            for (String encode : encodedList){
+                Ticket ticket = (Ticket) fromString(encode);
+                if (ticket.getChannelName().equalsIgnoreCase(channelName)) {
+                    ownerID = ticket.getOwnerID();
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return ownerID;
+    }
     public static String formatTime(long second){
         return DurationFormatUtils.formatDuration(second * 1000L, "H:mm:ss", true);
     }
