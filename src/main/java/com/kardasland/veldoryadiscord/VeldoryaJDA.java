@@ -100,7 +100,6 @@ public final class VeldoryaJDA extends JavaPlugin {
             ConfigManager.load("commands.yml");
             ConfigManager.load("dailyrewards.yml");
             ConfigManager.load("messages.yml");
-            ConfigManager.load("license.yml");
             ConfigManager.load("ticketdata.yml");
             ConfigManager.load("ticketsystem.yml");
             ConfigManager.load("tempdata.yml");

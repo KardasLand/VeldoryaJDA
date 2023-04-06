@@ -1,12 +1,73 @@
 dailyrewards:
-  vip:
-    group: "role.vip"
-    cooldown: 150 # second
+  acemi:
+    group: "group.acemi"
+    cooldown: 86400 # saniye
     message:
       title: "Başarılı!"
-      description: "Günlük Ödülünü Aldın **Ödülün:**Şeytan'ın eşyalarını dızladın!"
+      description: "Günlük Ödülünü Aldın Ödülün: **Acemi'nin Ödülü!**"
       color: "YELLOW"
       footer: "play.veldorya.com"
-      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+    commands:
+      - "give %player% diamond"
+  vip:
+    group: "group.vip"
+    cooldown: 86400 # saniye
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın Ödülün: **VIP'nin Ödülü!**"
+      color: "YELLOW"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+    commands:
+      - "give %player% diamond"
+  vip+:
+    group: "group.vip+"
+    cooldown: 86400 # saniye
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın Ödülün: **VIP+'ın Ödülü!**"
+      color: "YELLOW"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+    commands:
+      - "give %player% diamond"
+  mvip:
+    group: "group.mvip"
+    cooldown: 86400 # saniye
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın Ödülün: **MVIP'nin Ödülü!**"
+      color: "YELLOW"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+    commands:
+      - "give %player% diamond"
+  mvip+:
+    group: "group.mvip+"
+    cooldown: 86400 # saniye
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın Ödülün: **MVIP+'ın Ödülü!**"
+      color: "YELLOW"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+    commands:
+      - "give %player% diamond"
+  tvip:
+    group: "group.tvip"
+    cooldown: 86400 # saniye
+    message:
+      title: "Başarılı!"
+      description: "Günlük Ödülünü Aldın Ödülün: **TVIP'nin Ödülü!**"
+      color: "YELLOW"
+      footer: "play.veldorya.com"
+      icon: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
+      thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1055922475910828143/veldoryasitelogo.png?width=671&height=671"
     commands:
       - "give %player% diamond"

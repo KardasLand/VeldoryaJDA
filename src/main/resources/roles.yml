@@ -1,7 +1,16 @@
 roles:
   vip:
-    permission: "role.vip"
+    permission: "group.vip"
     id: 1050106152974815243
-  plus:
-    permission: "role.vip2"
+  vip+:
+    permission: "group.vip+"
     id: 1050106130333978744
+  mvip:
+    permission: "group.mvip"
+    id: 1028353065734119474
+  mvip+:
+    permission: "group.mvip+"
+    id: 1012755635663810621
+  tvip:
+    permission: "group.tvip"
+    id: 1012440911445229609

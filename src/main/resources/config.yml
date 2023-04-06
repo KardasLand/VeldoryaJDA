@@ -1,38 +1,38 @@
 discord:
-  token: ""
-  owner: ""
-  guild: ""
-  prefix: ""
-  status: "%online% kişi oynuyor!"
-  verifyCommandList:
+  token: "" # Bot Token
+  owner: "" #Admin ID'si
+  guild: "" #Discord Sunucusunun ID'si
+  prefix: "!" # Botun komut prefix'i
+  status: "%online% oyuncu ile" # Botun oynuyor kısmı
+  verifyCommandList: # Hesap eşlenince girilecek komutlar
     - "give %player% diamond 20"
   channels:
-    suggestions: ""
-    joinleave: ""
-    verify: ""
-    dailyreward: ""
-    discordchat: ""
-    consoleMirror: ""
+    verify: "" #doğrulama kanalı
+    suggestions: "" #öneri kanalı
+    joinleave: "" #giriş-çıkış kanalı
+    dailyreward: "" #günlük-ödül kanalı
+    discordchat: "" #oyun-sohbet kanalı
+    consoleMirror: "" # sunucu-konsol kanalı - Yakın zamanda eklenecek.
 discordchat:
-    format: "%player% > %message%"
-modules:
-  suggestionModule: true
-  joinLeaveModule: true
-  verifyModule: true
-  dailyRewardModule: true
-  discordChatModule: true
-  sudoModule: true
-  2faModule: true
-  ticketModule: true
-  consoleModule: true
+  format: "`%player%` ⇴ %message%"
+modules: # kullanmak istemediğin özellikleri kapatabilirsin.
+  suggestionModule: true # öneri sistemi
+  joinLeaveModule: true # giriş çıkış gösterme sistemi
+  verifyModule: true # eşleme sistemi
+  dailyRewardModule: true # günlük ödül sistemi
+  discordChatModule: true # oyun içi sohbet sistemi
+  sudoModule: true # admin komut sistemi
+  2faModule: false # 2 aşamalı doğrulama sistemi
+  ticketModule: false # talep sistemi
+  consoleModule: false # Yakın zamanda eklenecek.
 2faPlayers:
-  - "KardasLand"
+  - "Blach"
 2faWhitelist:
-  - "/login"
-changePlayerNameAfterVerify: true
+  - "/giris"
+changePlayerNameAfterVerify: false # Oyuncu hesabını eşledikten sonra discord ismiyle oyundaki ismi aynı olsun mu?
 remember2FAIPAddresses: true
-suggestionTime: 20 # second
-autosaveTime: 300 # second
+suggestionTime: 3600 # saniye
+autosaveTime: 300 # saniye
 sql:
   type: "sqlite"
   host: "localhost"

@@ -1,15 +1,32 @@
 commands:
-  example:
-    desc: "Example."
-    color: "CYAN"
-    footer: ""
+  ip:
+    title: "Sunucumuzun IP Adresi"
+    desc: "**play.veldorya.com**\n ip adresinden sunucumuza giriş yapabilirsin!"
+    color: "ORANGE"
+    footer: "www.veldorya.com"
     icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+  site:
+    title: "Site Adresi"
+    desc: "**https://veldorya.com/**\n adresinden sitemize ulaşabilirsin."
+    color: "YELLOW"
+    footer: "www.veldorya.com"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+  #    fields: # Bunu kullanmak istersen başındaki #'leri kaldır
+  #      a:
+  #        title: ""
+  #        desc: ""
+  #        inline: false
+  esle: # işiniz bittikten sonra bu komutu kaldırın.
+    title: ":clipboard: DISCORD EŞLEME SİSTEMİ NEDİR?"
+    desc: "Sunucudaki hesabınızı Discord hesabınızla eşleyen bir eşleme sistemidir.\n"
+    color: "GREEN"
+    footer: "www.veldorya.com"
+    icon: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
+    thumbnail: "https://media.discordapp.net/attachments/1030718994946199552/1057932883546878002/Gif-1.gif"
     fields:
       a:
-        title: "Example 2"
-        desc: "Example 2 desc"
-        inline: false
-      b:
-        title: "Example"
-        desc: "example desc"
+        title: "Hesabımı nasıl eşlerim?"
+        desc: "⥈ Sunucumuza girip /eşle komutunu kullanın. \n ⥈ Size mesaj olarak gönderdiğimiz eşleme kodunu bu kanalda `/eşle 123456` şeklinde yazın. \nBu işlemlerden sonra hesabınızın eşleme işlemi tamamlanacaktır."
         inline: false
