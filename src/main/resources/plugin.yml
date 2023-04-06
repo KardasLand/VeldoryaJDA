@@ -1,8 +1,8 @@
 name: VeldoryaDiscord
-version: '1.0.5'
+version: '1.0.6'
 main: com.kardasland.veldoryadiscord.VeldoryaJDA
 api-version: 1.16
-website: www.veldorya.com
+website: www.kardasland.com
 libraries:
   - net.dv8tion:JDA:5.0.0-beta.1
   - mysql:mysql-connector-java:8.0.30
@@ -11,7 +11,10 @@ commands:
   dogrula:
     aliases:
       - verify
+      - hesapeşle
       - doğrula
+      - esle
+      - eşle
   oneri:
     aliases:
       - öneri
@@ -25,3 +28,5 @@ commands:
   unlink:
     aliases:
       - dogrulamayikaldir
+      - eslekaldir
+      - eslemeyikaldir
