@@ -120,8 +120,12 @@ public class JDAThread extends Thread {
             guild.loadMembers();
             System.out.println("Connected to Discord Bot successfully.");
 
-            TextChannel channel = guild.getTextChannelById(ConfigManager.get("config.yml").getString("discord.channels.verify"));
-            channel.upsertPermissionOverride(Objects.requireNonNull(guild.getMemberById(jda.getSelfUser().getId()))).setAllowed(Permission.MESSAGE_MANAGE).queue();
+
+            // Fixed verify id cannot be empty issue.
+            if (VeldoryaJDA.instance.tryLoadModule("verifyModule", "verify")){
+                TextChannel channel = guild.getTextChannelById(ConfigManager.get("config.yml").getString("discord.channels.verify"));
+                channel.upsertPermissionOverride(Objects.requireNonNull(guild.getMemberById(jda.getSelfUser().getId()))).setAllowed(Permission.MESSAGE_MANAGE).queue();
+            }
             //System.out.println("Permission MANAGE_CHANNEL: " + PermissionUtil.checkPermission(guild.getSelfMember(), Permission.MANAGE_CHANNEL));
             if (ConfigManager.get("config.yml").getBoolean("modules.ticketModule")){
                 TextChannel ticketChannel = guild.getTextChannelById(ticketSystem.getString("ticketChannel"));

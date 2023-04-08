@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.interactions.components.ItemComponent;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.managers.channel.ChannelManager;
 import net.dv8tion.jda.api.managers.channel.concrete.TextChannelManager;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -63,6 +64,7 @@ public class Ticket implements Serializable {
         this.channelName = ticketSystem.getString("ticketFormat")
                 .replace("%number%", String.valueOf(ticketSize))
                 .replace("%member%", VeldoryaJDA.instance.getGuild().getMemberById(ownerID).getUser().getName()).replaceAll("[^a-zA-Z0-9]", " ");
+        this.channelName = channelName.replace(" ", "-");
         ticketData.set("number", ticketSize);
         ConfigManager.save("ticketdata.yml");
         ConfigManager.reload("ticketdata.yml");
@@ -71,10 +73,12 @@ public class Ticket implements Serializable {
                 .addPermissionOverride(VeldoryaJDA.instance.getGuild().getMemberById(ownerID), EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND), null)
                 .addPermissionOverride(VeldoryaJDA.instance.getGuild().getPublicRole(), null, EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_SEND))
                 .complete();
-        TextChannel textChannel = category.getJDA().getTextChannelsByName(channelName, true).get(0);
-        channelID = textChannel.getId();
-        makeRest(textChannel);
-
+        for (TextChannel textChannel : category.getTextChannels()){
+            if (textChannel.getName().equalsIgnoreCase(this.channelName)){
+                channelID = textChannel.getId();
+                makeRest(textChannel);
+            }
+        }
         List<String> encodedList = ConfigManager.get("ticketdata.yml").getStringList("tickets");
 
         String encoded = toString(this);

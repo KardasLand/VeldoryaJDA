@@ -1,10 +1,10 @@
 name: VeldoryaDiscord
-version: '1.0.6'
+version: '1.0.7'
 main: com.kardasland.veldoryadiscord.VeldoryaJDA
 api-version: 1.16
 website: www.kardasland.com
 libraries:
-  - net.dv8tion:JDA:5.0.0-beta.1
+  - net.dv8tion:JDA:5.0.0-beta.6
   - mysql:mysql-connector-java:8.0.30
   - com.zaxxer:HikariCP:4.0.3
 commands:

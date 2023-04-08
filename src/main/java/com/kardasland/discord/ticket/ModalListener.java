@@ -213,6 +213,7 @@ public class ModalListener extends ListenerAdapter {
                         }
                     }
                     ticket.createNewTicket();
+                    //event.getHook().editOriginal("a").queue();
                     event.getHook().editOriginal(ConfigManager.get("ticketsystem.yml").getString("messages.ticketOpened").replaceAll("%mentionticket%", event.getGuild().getTextChannelsByName(ticket.channelName, true).get(0).getAsMention())).queue();
                 } catch (IOException | ClassNotFoundException e) {
                     throw new RuntimeException(e);
